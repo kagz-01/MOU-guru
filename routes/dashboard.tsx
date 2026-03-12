@@ -48,12 +48,12 @@ export const handler: Handlers<DashboardData> = {
         SELECT status, COUNT(*) as count FROM mous GROUP BY status ORDER BY count DESC
       `;
       const expiringResult = await conn.queryObject<ExpiringMOU>`
-        SELECT mou_id, title, reference_no, end_date, EXTRACT(DAY FROM end_date - CURRENT_DATE) as days_remaining
+        SELECT mou_id, title, reference_no, end_date, (end_date - CURRENT_DATE) as days_remaining
         FROM mous WHERE status = 'Active' AND end_date BETWEEN CURRENT_DATE AND CURRENT_DATE + INTERVAL '30 days'
         ORDER BY end_date ASC
       `;
       const milestonesResult = await conn.queryObject<UpcomingMilestone>`
-        SELECT m.milestone_id, m.mou_id, mou.title as mou_title, m.title, m.due_date, EXTRACT(DAY FROM m.due_date - CURRENT_DATE) as days_remaining
+        SELECT m.milestone_id, m.mou_id, mou.title as mou_title, m.title, m.due_date, (m.due_date - CURRENT_DATE) as days_remaining
         FROM milestones m JOIN mous mou ON m.mou_id = mou.mou_id
         WHERE m.status IN ('Pending', 'In Progress') AND m.due_date BETWEEN CURRENT_DATE AND CURRENT_DATE + INTERVAL '30 days'
         ORDER BY m.due_date ASC

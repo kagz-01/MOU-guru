@@ -20,7 +20,13 @@ export async function handler(
 
   // Skip auth for public routes and static assets
   const publicPaths = new Set(["/", "/login", "/signup", "/explore"]);
-  if (publicPaths.has(url.pathname) || url.pathname.startsWith("/static/")) {
+  const isStaticAsset = /\.(css|js|png|jpg|jpeg|svg|gif|ico|woff2?|ttf)$/.test(url.pathname);
+
+  if (
+    publicPaths.has(url.pathname) ||
+    url.pathname.startsWith("/static/") ||
+    isStaticAsset
+  ) {
     return await ctx.next();
   }
 

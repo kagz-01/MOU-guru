@@ -1,5 +1,6 @@
 // components/PublicLayout.tsx
 import { ComponentChildren } from "preact";
+import ThemeToggle from "../islands/ThemeToggle.tsx";
 
 type PublicLayoutProps = {
   children: ComponentChildren;
@@ -42,7 +43,10 @@ export default function PublicLayout({ children }: PublicLayoutProps) {
           >
             Portal Login
           </a>
-          <a href="/mou/init" class="btn">Initialize Flow</a>
+          <div class="flex items-center gap-4">
+            <ThemeToggle />
+            <a href="/mou/init" class="btn">Initialize Flow</a>
+          </div>
         </div>
       </header>
 

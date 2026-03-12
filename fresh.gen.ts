@@ -7,12 +7,11 @@ import * as $_app from "./routes/_app.tsx";
 import * as $_middleware from "./routes/_middleware.ts";
 import * as $api_attachments_upload_id_ from "./routes/api/attachments/upload/[id].ts";
 import * as $api_auth_signup from "./routes/api/auth/signup.ts";
-import * as $api_dev_trigger_reminders from "./routes/api/dev/trigger-reminders.ts";
-import * as $api_joke from "./routes/api/joke.ts";
+import * as $api_mou_id_parties from "./routes/api/mou/[id]/parties.ts";
+import * as $api_mou_create from "./routes/api/mou/create.ts";
+import * as $api_parties from "./routes/api/parties.ts";
 import * as $api_reports_generate from "./routes/api/reports/generate.ts";
 import * as $dashboard from "./routes/dashboard.tsx";
-import * as $explore from "./routes/explore.tsx";
-import * as $greet_name_ from "./routes/greet/[name].tsx";
 import * as $index from "./routes/index.tsx";
 import * as $login from "./routes/login.tsx";
 import * as $logout from "./routes/logout.tsx";
@@ -21,8 +20,15 @@ import * as $mou_id_attachments from "./routes/mou/[id]/attachments.tsx";
 import * as $mou_id_edit from "./routes/mou/[id]/edit.tsx";
 import * as $mou_id_milestones from "./routes/mou/[id]/milestones.tsx";
 import * as $mou_id_parties from "./routes/mou/[id]/parties.tsx";
+import * as $mou_init from "./routes/mou/init.tsx";
+import * as $mou_new from "./routes/mou/new.tsx";
+import * as $parties from "./routes/parties.tsx";
 import * as $signup from "./routes/signup.tsx";
-import * as $Counter from "./islands/Counter.tsx";
+import * as $Accordion from "./islands/Accordion.tsx";
+import * as $MouWizard from "./islands/MouWizard.tsx";
+import * as $PartyManager from "./islands/PartyManager.tsx";
+import * as $PublicMouWizard from "./islands/PublicMouWizard.tsx";
+import * as $ThemeToggle from "./islands/ThemeToggle.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -32,12 +38,11 @@ const manifest = {
     "./routes/_middleware.ts": $_middleware,
     "./routes/api/attachments/upload/[id].ts": $api_attachments_upload_id_,
     "./routes/api/auth/signup.ts": $api_auth_signup,
-    "./routes/api/dev/trigger-reminders.ts": $api_dev_trigger_reminders,
-    "./routes/api/joke.ts": $api_joke,
+    "./routes/api/mou/[id]/parties.ts": $api_mou_id_parties,
+    "./routes/api/mou/create.ts": $api_mou_create,
+    "./routes/api/parties.ts": $api_parties,
     "./routes/api/reports/generate.ts": $api_reports_generate,
     "./routes/dashboard.tsx": $dashboard,
-    "./routes/explore.tsx": $explore,
-    "./routes/greet/[name].tsx": $greet_name_,
     "./routes/index.tsx": $index,
     "./routes/login.tsx": $login,
     "./routes/logout.tsx": $logout,
@@ -46,10 +51,17 @@ const manifest = {
     "./routes/mou/[id]/edit.tsx": $mou_id_edit,
     "./routes/mou/[id]/milestones.tsx": $mou_id_milestones,
     "./routes/mou/[id]/parties.tsx": $mou_id_parties,
+    "./routes/mou/init.tsx": $mou_init,
+    "./routes/mou/new.tsx": $mou_new,
+    "./routes/parties.tsx": $parties,
     "./routes/signup.tsx": $signup,
   },
   islands: {
-    "./islands/Counter.tsx": $Counter,
+    "./islands/Accordion.tsx": $Accordion,
+    "./islands/MouWizard.tsx": $MouWizard,
+    "./islands/PartyManager.tsx": $PartyManager,
+    "./islands/PublicMouWizard.tsx": $PublicMouWizard,
+    "./islands/ThemeToggle.tsx": $ThemeToggle,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

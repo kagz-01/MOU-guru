@@ -1,5 +1,6 @@
 // components/AppLayout.tsx
 import { ComponentChildren } from "preact";
+import ThemeToggle from "../islands/ThemeToggle.tsx";
 import {
   IconDashboard,
   IconDocument,
@@ -72,6 +73,8 @@ export default function AppLayout(
               [ {user?.role} ]
             </span>
           </div>
+          <div class="h-8 w-[2px] bg-border mx-2"></div>
+          <ThemeToggle />
           <div class="h-8 w-[2px] bg-border mx-2"></div>
           <a
             href="/logout"
