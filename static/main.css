@@ -1,0 +1,86 @@
+/* static/main.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap");
+
+@layer base {
+  /* Brutalist OLED Dark Theme */
+  :root {
+    --background: 0 0% 4%; /* #0a0a0a */
+    --foreground: 0 0% 98%; /* #FAFAFA */
+
+    --primary: 0 0% 98%; /* #FAFAFA */
+    --primary-foreground: 0 0% 4%; /* #0a0a0a */
+
+    --secondary: 0 0% 15%; /* #262626 */
+    --secondary-foreground: 0 0% 98%;
+
+    --accent: 0 0% 98%;
+    --accent-foreground: 0 0% 4%;
+
+    --border: 0 0% 20%; /* #333333 */
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --radius: 0px; /* Brutalist sharp edges */
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 font-bold uppercase
+      tracking-wider transition-all duration-200 cursor-pointer;
+    @apply bg-primary text-primary-foreground border-2 border-primary
+      hover:bg-transparent hover:text-primary active:translate-y-[2px];
+    border-radius: var(--radius);
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-6 py-3 font-bold uppercase
+      tracking-wider transition-all duration-200 cursor-pointer;
+    @apply bg-transparent text-primary border-2 border-primary hover:bg-primary
+      hover:text-primary-foreground active:translate-y-[2px];
+    border-radius: var(--radius);
+  }
+
+  /* Purging glass-card in favor of brutalist solid blocks */
+  .glass-card {
+    @apply bg-background border border-border
+      shadow-[4px_4px_0px_0px_rgba(255,255,255,0.1)] transition-transform
+      duration-200;
+    border-radius: var(--radius);
+  }
+
+  .glass-card:hover {
+    @apply shadow-[6px_6px_0px_0px_rgba(255,255,255,0.15)] -translate-y-1
+      -translate-x-1;
+  }
+
+  .status-badge {
+    @apply inline-flex items-center px-3 py-1.5 text-xs font-bold uppercase
+      tracking-widest border border-current;
+    border-radius: var(--radius);
+  }
+
+  .status-draft {
+    @apply text-muted-foreground border-muted-foreground;
+  }
+  .status-active {
+    @apply text-emerald-400 border-emerald-400;
+  }
+  .status-pending-approval {
+    @apply text-amber-400 border-amber-400;
+  }
+  .status-expired, .status-terminated {
+    @apply text-rose-500 border-rose-500;
+  }
+  .status-renewed {
+    @apply text-blue-400 border-blue-400;
+  }
+}
+
+body {
+  @apply bg-background text-foreground antialiased font-sans;
+}
